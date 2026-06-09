@@ -2,7 +2,8 @@
 import { ref } from "vue";
 
 interface DatePickerChangeDetail {
-  value?: string;
+  value: Date | string | null;
+  valueStr: string;
 }
 
 const birthday = ref("");
@@ -10,7 +11,7 @@ const error = ref(false);
 
 const onBirthdayChange = (event: Event): void => {
   const customEvent = event as CustomEvent<DatePickerChangeDetail>;
-  birthday.value = customEvent.detail?.value ?? "";
+  birthday.value = customEvent.detail?.valueStr ?? "";
   error.value = false;
 };
 
@@ -22,7 +23,7 @@ const handleSubmit = (): void => {
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form>
     <goa-link
       version="2"
       href="#"
