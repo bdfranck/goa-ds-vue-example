@@ -35,10 +35,21 @@ const handleSubmit = (): void => {
       Back
     </goa-link>
 
-    <goa-text as="div" size="body-l" mt="none" mb="xs"
-      >Verify your age</goa-text
+    <goa-text
+      as="div"
+      size="body-l"
+      mt="none"
+      mb="xs"
     >
-    <goa-text as="h2" mt="none" mb="xl">What is your date of birth?</goa-text>
+      Verify your age
+    </goa-text>
+    <goa-text
+      as="h2"
+      mt="none"
+      mb="xl"
+    >
+      What is your date of birth?
+    </goa-text>
 
     <goa-callout
       v-if="error"
@@ -63,8 +74,8 @@ const handleSubmit = (): void => {
         version="2"
         name="birthday"
         type="input"
-        @_change="onBirthdayChange"
         :error="error"
+        @_change="onBirthdayChange"
       />
     </goa-form-item>
 

@@ -5,8 +5,15 @@ import AgeVerificationStep from "./components/AgeVerificationStep.vue";
 <template>
   <goa-one-column-layout>
     <section slot="header">
-      <goa-app-header version="2" url="#" heading="Apply for a service">
-        <a slot="utilities" href="#">Sign in</a>
+      <goa-app-header
+        version="2"
+        url="#"
+        heading="Apply for a service"
+      >
+        <a
+          slot="utilities"
+          href="#"
+        >Sign in</a>
       </goa-app-header>
     </section>
 
@@ -15,7 +22,7 @@ import AgeVerificationStep from "./components/AgeVerificationStep.vue";
     </goa-page-block>
 
     <section slot="footer">
-      <goa-app-footer version="2"></goa-app-footer>
+      <goa-app-footer version="2" />
     </section>
   </goa-one-column-layout>
 </template>
