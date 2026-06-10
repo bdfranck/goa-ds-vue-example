@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { GoabButton, GoabLink, GoabText, GoabCallout, GoabFormItem, GoabDatePicker } from "@abgov/vue-components";
 
 interface DatePickerChangeDetail {
   value: Date | string | null;
@@ -9,9 +10,8 @@ interface DatePickerChangeDetail {
 const birthday = ref("");
 const error = ref(false);
 
-const onBirthdayChange = (event: Event): void => {
-  const customEvent = event as CustomEvent<DatePickerChangeDetail>;
-  birthday.value = customEvent.detail?.valueStr ?? "";
+const onBirthdayChange = (detail: DatePickerChangeDetail): void => {
+  birthday.value = detail.valueStr ?? "";
   error.value = false;
 };
 
@@ -24,37 +24,35 @@ const handleSubmit = (): void => {
 
 <template>
   <form>
-    <goa-link
-      version="2"
+    <GoabLink
       href="#"
       color="secondary"
-      leadingicon="arrow-back"
+      leading-icon="arrow-back"
       size="small"
       mt="xl"
       mb="2xl"
     >
       Back
-    </goa-link>
+    </GoabLink>
 
-    <goa-text
+    <GoabText
       as="div"
       size="body-l"
       mt="none"
       mb="xs"
     >
       Verify your age
-    </goa-text>
-    <goa-text
+    </GoabText>
+    <GoabText
       as="h2"
       mt="none"
       mb="xl"
     >
       What is your date of birth?
-    </goa-text>
+    </GoabText>
 
-    <goa-callout
+    <GoabCallout
       v-if="error"
-      version="2"
       type="emergency"
       heading="There is a problem"
       emphasis="low"
@@ -63,32 +61,29 @@ const handleSubmit = (): void => {
       <ul>
         <li>Enter your date of birth</li>
       </ul>
-    </goa-callout>
+    </GoabCallout>
 
-    <goa-form-item
-      version="2"
+    <GoabFormItem
       for="birthday"
       :error="error ? 'Enter your date of birth' : undefined"
     >
-      <goa-date-picker
+      <GoabDatePicker
         id="birthday"
-        version="2"
         name="birthday"
         type="input"
         :error="error"
-        @_change="onBirthdayChange"
+        @on-change="onBirthdayChange"
       />
-    </goa-form-item>
+    </GoabFormItem>
 
-    <goa-button
-      version="2"
+    <GoabButton
       type="primary"
       mt="xl"
       mb="none"
-      @click="handleSubmit"
+      @on-click="handleSubmit"
     >
       Continue
-    </goa-button>
+    </GoabButton>
   </form>
 </template>
 
